@@ -1,0 +1,116 @@
+{
+  "hotkeys": [
+    {
+      "key": "Alt+P",
+      "command": "speak_selection",
+      "description": "Преобразовать выделенный текст в речь",
+      "context": "editor"
+    },
+    {
+      "key": "Alt+B",
+      "command": "browse_selection",
+      "description": "Выполнить поиск информации по выделенному тексту",
+      "context": "editor"
+    },
+    {
+      "key": "Alt+E",
+      "command": "explain_selection",
+      "description": "Объяснить выделенный код и озвучить объяснение",
+      "context": "editor"
+    },
+    {
+      "key": "Alt+I",
+      "command": "get_tools",
+      "description": "Получить список доступных инструментов MCP-сервера",
+      "context": "global"
+    }
+  ],
+  "commands": [
+    {
+      "name": "speak_selection",
+      "function": "cursor_plugin.extensions.execute_cursor_command",
+      "args": {
+        "command": "speak_selection"
+      }
+    },
+    {
+      "name": "browse_selection",
+      "function": "cursor_plugin.extensions.execute_cursor_command",
+      "args": {
+        "command": "browse_selection"
+      }
+    },
+    {
+      "name": "explain_selection",
+      "function": "cursor_plugin.extensions.execute_cursor_command",
+      "args": {
+        "command": "explain_selection"
+      }
+    },
+    {
+      "name": "get_tools",
+      "function": "cursor_plugin.extensions.execute_cursor_command",
+      "args": {
+        "command": "get_tools"
+      }
+    }
+  ],
+  "menus": [
+    {
+      "id": "editor_context",
+      "items": [
+        {
+          "label": "Voice Avatar",
+          "submenu": [
+            {
+              "label": "Преобразовать в речь",
+              "command": "speak_selection"
+            },
+            {
+              "label": "Найти информацию",
+              "command": "browse_selection"
+            },
+            {
+              "label": "Объяснить код",
+              "command": "explain_selection"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "main_menu",
+      "items": [
+        {
+          "label": "Инструменты",
+          "submenu": [
+            {
+              "label": "Voice Avatar MCP",
+              "submenu": [
+                {
+                  "label": "Преобразовать выделенное в речь",
+                  "command": "speak_selection"
+                },
+                {
+                  "label": "Найти информацию",
+                  "command": "browse_selection"
+                },
+                {
+                  "label": "Объяснить код",
+                  "command": "explain_selection"
+                },
+                {
+                  "type": "separator"
+                },
+                {
+                  "label": "Получить список инструментов",
+                  "command": "get_tools"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+} 

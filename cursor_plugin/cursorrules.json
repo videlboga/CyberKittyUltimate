@@ -1,0 +1,67 @@
+{
+    "name": "Voice Avatar MCP Plugin",
+    "version": "1.0.0",
+    "description": "Плагин для управления Voice Avatar MCP сервером через Cursor",
+    "author": "CyberKitty",
+    "tools": [
+        {
+            "name": "speak_text",
+            "description": "Преобразует текст в речь с использованием Piper TTS",
+            "parameters": {
+                "text": {
+                    "type": "string",
+                    "description": "Текст для преобразования в речь"
+                },
+                "voice_model": {
+                    "type": "string",
+                    "description": "Модель голоса (по умолчанию ru_RU-irina-medium)",
+                    "default": "ru_RU-irina-medium"
+                }
+            },
+            "function": "cursor_plugin.voice_avatar_plugin.speak_text_sync"
+        },
+        {
+            "name": "echo_message",
+            "description": "Тестовый инструмент, возвращающий эхо сообщения",
+            "parameters": {
+                "message": {
+                    "type": "string",
+                    "description": "Сообщение для эхо-ответа"
+                }
+            },
+            "function": "cursor_plugin.voice_avatar_plugin.echo_message_sync"
+        },
+        {
+            "name": "browse_website",
+            "description": "Автоматизирует работу с браузером с использованием Browser-Use",
+            "parameters": {
+                "url": {
+                    "type": "string",
+                    "description": "URL веб-сайта для посещения"
+                },
+                "task": {
+                    "type": "string",
+                    "description": "Задача, которую нужно выполнить на сайте",
+                    "default": "собрать информацию"
+                }
+            },
+            "function": "cursor_plugin.voice_avatar_plugin.browse_website_sync"
+        },
+        {
+            "name": "get_tools_info",
+            "description": "Получает информацию о доступных инструментах MCP-сервера",
+            "parameters": {},
+            "function": "cursor_plugin.voice_avatar_plugin.get_tools_info"
+        }
+    ],
+    "setup": {
+        "requirements": ["httpx", "asyncio"],
+        "environment_variables": {
+            "MCP_SERVER_URL": "http://127.0.0.1:8000"
+        }
+    },
+    "activation": {
+        "auto_start": true,
+        "enabled_by_default": true
+    }
+} 

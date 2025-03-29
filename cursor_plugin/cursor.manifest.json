@@ -1,0 +1,135 @@
+{
+  "name": "Voice Avatar MCP Plugin",
+  "version": "1.0.0",
+  "description": "Плагин для управления Voice Avatar MCP сервером через Cursor",
+  "author": "CyberKitty",
+  "license": "MIT",
+  "main": "./voice_avatar_plugin.py",
+  "icon": "./icon.png",
+  "cursor": {
+    "compatibleVersions": ">=1.0.0",
+    "keywords": ["voice", "avatar", "mcp", "text-to-speech", "browser"],
+    "categories": ["utility", "productivity", "AI"],
+    "activationEvents": [
+      "onCommand:speak_selection",
+      "onCommand:browse_selection",
+      "onCommand:explain_selection",
+      "onCommand:get_tools",
+      "onLanguage:python"
+    ],
+    "contributes": {
+      "commands": [
+        {
+          "command": "speak_selection",
+          "title": "Преобразовать выделенный текст в речь"
+        },
+        {
+          "command": "browse_selection",
+          "title": "Выполнить поиск информации по выделенному тексту"
+        },
+        {
+          "command": "explain_selection",
+          "title": "Объяснить выделенный код и озвучить объяснение"
+        },
+        {
+          "command": "get_tools",
+          "title": "Получить список доступных инструментов MCP-сервера"
+        }
+      ],
+      "keybindings": [
+        {
+          "command": "speak_selection",
+          "key": "alt+p",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "browse_selection",
+          "key": "alt+b",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "explain_selection",
+          "key": "alt+e",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "get_tools",
+          "key": "alt+i"
+        }
+      ],
+      "menus": {
+        "editor/context": [
+          {
+            "submenu": "voice-avatar",
+            "group": "z_commands"
+          }
+        ],
+        "voice-avatar": [
+          {
+            "command": "speak_selection",
+            "group": "1_main"
+          },
+          {
+            "command": "browse_selection",
+            "group": "1_main"
+          },
+          {
+            "command": "explain_selection",
+            "group": "1_main"
+          }
+        ],
+        "menubar": [
+          {
+            "id": "tools",
+            "submenu": "voice-avatar-menu"
+          }
+        ],
+        "voice-avatar-menu": [
+          {
+            "command": "speak_selection"
+          },
+          {
+            "command": "browse_selection"
+          },
+          {
+            "command": "explain_selection"
+          },
+          {
+            "type": "separator"
+          },
+          {
+            "command": "get_tools"
+          }
+        ]
+      }
+    },
+    "configuration": {
+      "title": "Voice Avatar MCP",
+      "properties": {
+        "voiceAvatarMCP.serverUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:8000",
+          "description": "URL адрес MCP-сервера"
+        },
+        "voiceAvatarMCP.defaultVoiceModel": {
+          "type": "string",
+          "default": "ru_RU-irina-medium",
+          "description": "Модель голоса по умолчанию"
+        },
+        "voiceAvatarMCP.outputDirectory": {
+          "type": "string",
+          "default": "/home/cyberkitty/my_mcp/output",
+          "description": "Директория для сохранения выходных файлов"
+        }
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyberkitty/voice-avatar-mcp-plugin"
+  },
+  "dependencies": {
+    "httpx": ">=0.23.0",
+    "asyncio": "*"
+  }
+} 

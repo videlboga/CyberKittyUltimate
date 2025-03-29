@@ -1,0 +1,126 @@
+// Voice Avatar MCP Server - Правила для Cursor
+
+// Проект голосового интерфейса и анимированных персонажей
+// Позволяет генерировать речь и создавать анимированных персонажей через MCP-сервер
+
+// Общая информация о проекте
+const projectInfo = {
+  name: "Voice Avatar MCP Server",
+  description: "MCP-сервер для голосового интерфейса с анимированным персонажем",
+  technologies: [
+    "Python 3.12+",
+    "Piper TTS",
+    "V-Express",
+    "MCP Protocol",
+    "NVIDIA CUDA 12.6",
+    "PyTorch"
+  ],
+  folderStructure: `
+~/my_mcp/
+  ├── voice_avatar_mcp.py       # Основной MCP-сервер
+  ├── requirements.txt          # Зависимости для MCP-сервера
+  ├── models/                   # Директория для моделей
+  │   ├── tts/                  # Модели для TTS
+  │   └── avatars/              # Ресурсы для аватаров
+  ├── output/                   # Директория для выходных файлов
+  ├── assets/                   # Шаблоны аватаров
+  └── docs/                     # Документация
+  `
+};
+
+// Инструменты MCP-сервера
+const mcpTools = [
+  {
+    name: "speak_text",
+    description: "Преобразует текст в речь с помощью Piper TTS",
+    parameters: [
+      { name: "text", type: "string", description: "Текст для преобразования в речь" },
+      { name: "voice_model", type: "string", description: "Модель голоса (по умолчанию ru_RU-irina-medium)" }
+    ],
+    exampleUsage: 'speak_text(text: "Привет, мир!")'
+  },
+  {
+    name: "animate_avatar",
+    description: "Создает анимированного персонажа из изображения и аудио",
+    parameters: [
+      { name: "image_path", type: "string", description: "Путь к изображению аватара" },
+      { name: "audio_path", type: "string", description: "Путь к аудиофайлу" },
+      { name: "output_path", type: "string", description: "Путь для сохранения результата (опционально)" }
+    ],
+    exampleUsage: 'animate_avatar(image_path: "/home/cyberkitty/my_mcp/assets/images/example.jpg", audio_path: "/home/cyberkitty/my_mcp/output/speech_1234567890.wav")'
+  },
+  {
+    name: "speak_with_avatar",
+    description: "Создает видео анимированного персонажа, озвучивающего текст",
+    parameters: [
+      { name: "text", type: "string", description: "Текст для озвучивания" },
+      { name: "image_path", type: "string", description: "Путь к изображению аватара" },
+      { name: "voice_model", type: "string", description: "Модель голоса (опционально)" }
+    ],
+    exampleUsage: 'speak_with_avatar(text: "Привет, мир!", image_path: "/home/cyberkitty/my_mcp/assets/images/example.jpg")'
+  }
+];
+
+// Правила для генерации кода и работы с MCP-сервером
+const codeStyle = {
+  pythonCode: [
+    "Используй современный Python 3.12+ синтаксис",
+    "Документируй функции и классы с использованием docstrings",
+    "Следуй PEP 8 для форматирования кода",
+    "Используй async/await для асинхронных операций",
+    "Предпочитай f-строки для форматирования"
+  ],
+  errorHandling: [
+    "Всегда обрабатывай исключения при вызове внешних процессов",
+    "Предоставляй информативные сообщения об ошибках",
+    "Логируй все ошибки для отладки"
+  ]
+};
+
+// Правила работы с Cursor
+// Эта секция содержит основные инструкции для Cursor AI
+const cursorRules = `
+Ты эксперт по разработке MCP-серверов, генерации речи и анимации персонажей.
+
+При работе с проектом Voice Avatar MCP Server:
+
+1. При генерации текстов и речи используй инструмент speak_text.
+   Пример: speak_text(text: "Привет, мир!")
+
+2. Для создания анимированного персонажа используй инструмент animate_avatar.
+   Пример: animate_avatar(image_path: "/home/cyberkitty/my_mcp/assets/images/example.jpg", audio_path: "/home/cyberkitty/my_mcp/output/speech_1234567890.wav")
+
+3. Для создания видео с говорящим персонажем используй инструмент speak_with_avatar.
+   Пример: speak_with_avatar(text: "Привет, мир!", image_path: "/home/cyberkitty/my_mcp/assets/images/example.jpg")
+
+4. В параметрах speak_with_avatar всегда указывай абсолютный путь к изображению.
+
+5. Примеры изображений для аватаров находятся в директории /home/cyberkitty/my_mcp/assets/images/.
+
+6. Результаты генерации (аудио и видео) сохраняются в /home/cyberkitty/my_mcp/output/.
+
+7. При работе с большими текстами разбивай их на части по смыслу для лучшего результата.
+
+8. Для русского языка предпочтительно используй модель ru_RU-irina-medium.
+
+9. При обнаружении ошибок предлагай конкретные решения с учетом архитектуры проекта.
+
+10. Всегда использовать полные абсолютные пути при указании местоположения файлов.
+`;
+
+// Дополнительные инструкции для разработки
+const developerInstructions = `
+При разработке и расширении MCP-сервера:
+
+1. Следуй структуре классов и методов в voice_avatar_mcp.py
+2. Используй единый стиль кода во всем проекте
+3. Любые новые зависимости добавляй в requirements.txt
+4. Тестируй изменения перед интеграцией
+5. Документируй новую функциональность
+6. При оптимизации V-Express учитывай характеристики NVIDIA RTX 3070 Ti
+7. Используй асинхронное программирование для улучшения производительности
+8. Рассматривай возможность кэширования для повторяющихся операций
+`;
+
+// ВАЖНО: при добавлении новых инструментов MCP обновляй документацию
+// Используй ясные описания параметров и примеры использования 
